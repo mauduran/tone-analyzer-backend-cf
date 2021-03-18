@@ -36,7 +36,10 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/autor', (req, res) => {
-  res.json({author: 'M. D. P.'});
+  res.json({
+    alumno: 'M. D. P.',
+    servicio: 'Cloud Foundry en IBM Cloud',
+  });
 });
 
 
