@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const healthRoutes = require('./routes/health-route');
 const toneRoutes = require('./routes/tone-analysis-route');
+const cors = require('cors');
 
 require('dotenv').config({
   silent: true,
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 // routes and api calls
 app.use('/health', healthRoutes);
