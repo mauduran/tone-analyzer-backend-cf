@@ -20,7 +20,7 @@ exports.getToneOfText = async(req, res, next) => {
       contentType: 'application/json',
     };
     const { result } = await toneAnalyzer.tone(toneParams);
-    res.json(result);
+    res.json(result.document_tone);
   } catch (error) {
     console.log(error);
     next({ status: 400, message: 'Missing content field on body'});
