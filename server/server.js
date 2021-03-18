@@ -16,9 +16,18 @@ app.use('/health', healthRoutes);
 
 // default path to serve up index.html (single page application)
 app.get('/', (req, res, next) => {
-
-  next({message: 'Missing fields', status: 400});
-}, errorHandler);
+  res.json({
+    Endpoints: {
+      '/': { GET: 'Information about app endpoints' },
+      '/tone': {
+        POST: {
+          description: 'Get tone of text input',
+          body: 'content: String',
+        },
+      },
+    },
+  });
+});
 
 
 // start node server
