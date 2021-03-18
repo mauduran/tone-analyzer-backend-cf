@@ -24,6 +24,7 @@ app.get('/', (req, res, next) => {
   res.json({
     Endpoints: {
       '/': { GET: 'Information about app endpoints' },
+      '/autor': { GET: 'Name of project author' },
       '/tone': {
         POST: {
           description: 'Get tone of text input',
@@ -32,6 +33,10 @@ app.get('/', (req, res, next) => {
       },
     },
   });
+});
+
+app.get('/autor', (req, res) => {
+  res.json({author: 'M. D. P.'});
 });
 
 
