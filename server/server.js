@@ -1,17 +1,22 @@
 // import dependencies and initialize express
 const express = require('express');
 const path = require('path');
-const errorHandler = require('./handlers/error-handler');
-
 const healthRoutes = require('./routes/health-route');
+const toneRoutes = require('./routes/tone-analysis-route');
 
+require('dotenv').config({
+  silent: true,
+});
+
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
 // routes and api calls
 app.use('/health', healthRoutes);
+app.use('/tone', toneRoutes);
 
 
 // default path to serve up index.html (single page application)
@@ -30,10 +35,8 @@ app.get('/', (req, res, next) => {
 });
 
 
-// start node server
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`App UI available on Port ${port}`);
+app.listen(PORT, () => {
+  console.log(`App UI available on Port ${PORT}`);
 });
 
 // error handler for unmatched routes or api calls
